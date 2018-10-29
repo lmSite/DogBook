@@ -1,0 +1,81 @@
+<!-- breedImages -->
+<style>
+    #project-viewer {
+        background: rgba(234, 246, 247, 0.932);
+    }
+
+    #close-project-viewer {
+        color: rgb(9, 136, 175);
+        font-size: 50px;
+        line-height: 78px;
+        cursor: pointer;
+    }
+
+    .modal-dialog {
+        max-width: 100%;
+    }
+
+    /* .project-media {
+        margin: auto;
+        max-width: 60%;
+        height: 300px;
+    } */
+</style>
+<div class="container">
+
+    <div class="text-center">
+        <h1 class="headerFont headerColor headerSize textShadow">{{breed}}</h1>
+        <h4 class="headerFont headerColor">Dog's Breed Gallery</h4>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4 col-sm-6  mx-auto p-1" ng-repeat="bImg in breedImages">
+        
+            <!-- Card 1 -->
+            <div class="card cardBody"  id="{{'card'+$index}}" name="{{'card'+$index}}">
+                <img ng-src="{{bImg}}" id="{{'img'+$index}}" onerror="this.src='assets/img/emptyImg.jpg'" class="imgSize my-middle w-100 rounded-circle"
+                    alt="dog image">
+
+                <a href="javascript:void()" id="{{$index}}" onclick="modal_getImgSrc(document.getElementById('img'+this.id).src)"
+                    data-toggle="modal" data-target="#project-viewer">
+                    <i class="fas fa-expand fa-lg pt-1" style="position: absolute;top: 0px;left: 0px;"></i>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="project-viewer" class="modal fade  mx-auto text-center">
+    <a id="close-project-viewer" data-dismiss="modal" class="">×</a>
+
+    <p>
+        <b>Original Source :</b>
+        <a href="" id="alink" target='_blank'>
+            <mark style="background-color: rgb(176, 202, 209)"><span id="imgSrcInfo"></span></mark>
+        </a>
+    </p>
+
+    <div class=" modal-dialog  ">
+        <div class=" mx-auto text-center">
+            <!-- <div class="project-title "></div> -->
+           
+            <div class=" project-media  my-3">
+                <img src='' id="imgModal" class=" img-thumbnail rounded" alt="">
+            </div>
+        </div>
+    </div>
+
+<!--  -->
+</div>
+<script>
+
+    function modal_getImgSrc(img_src) {
+        // alert(img_src);
+        document.getElementById("imgModal").src = img_src;
+        //   alert("img=> "+document.getElementById("imgModal").src);
+        document.getElementById("imgSrcInfo").innerHTML = img_src;
+        document.getElementById("alink").href = img_src;
+    }
+
+</script>

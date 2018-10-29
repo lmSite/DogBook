@@ -1,0 +1,40 @@
+
+<div class="container">
+    <h1 class="text-center headerFont headerColor headerSize textShadow">Dogs Gallery</h1>
+    <div class="row my-3 ">
+        <div class="col-sm-6 p-0 text-left">
+           
+            <input type="text" placeholder="Search.." name="search" class="form-control w-50 " ng-model="query.bname">
+           
+        </div>
+        <div class="col-sm-6 p-0 text-right">
+            <button type="button" class=" btn w-50 bg-primary text-white" ng-click="reloadLoc()">
+                <i class="fas fa-sync-alt"></i> Update Images
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-6  mx-auto p-1" ng-repeat="dogb in breedsObjArr | filter:query | orderBy:'bname' ">
+
+            <!-- Card 1 -->
+            <div class="card ">
+                <div class="card-header  shadow text-center cardHead font-weight-bold">{{ dogb.bname | uppercase}}</div>
+                <div class="card-body cardBody text-center">
+                    <div class="text-center">
+                        <img ng-src="{{dogb.bImgUrl }}" onerror="this.src='assets/img/emptyImg.jpg'" class="imgSize p-1 my-middle img-thumbnail rounded "
+                            alt="dog image">
+                        <div class="w-96 mx-auto bgBlue text-center text-white py-1  rounded  " ng-click="openBreed(dogb.bname)">
+                            <a href="javascript:void()" class="colorB"><i class="fas fa-images fa-lg "></i> see more...</a></div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
